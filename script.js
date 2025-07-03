@@ -71,3 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadImages();
     updateSlide();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  hamburger.addEventListener("click", () => {
+    mobileMenu.style.display =
+      mobileMenu.style.display === "flex" ? "none" : "flex";
+  });
+});
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (href && href.startsWith("#")) {
+      e.preventDefault();
+      const targetID = href.substring(1);
+      const targetEl = document.getElementById(targetID);
+      if (targetEl) {
+        targetEl.scrollIntoView({
+          behavior: "smooth",
+
+        });
+      }
+    }
+  });
+});
